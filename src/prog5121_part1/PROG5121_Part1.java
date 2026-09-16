@@ -7,7 +7,7 @@ package prog5121_part1;
 import java.util.Scanner;
 
 public class PROG5121_Part1 {
-
+// Main class controls the execution of the registration and login process.
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
