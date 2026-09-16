@@ -9,6 +9,7 @@ package prog5121_part1;
  * @author Leseg
  */
 public class Login {
+    // Login class handles user registration, validation, and authentication.
     private String username;
     private String password;
     private String cellphone;
