@@ -15,7 +15,8 @@ import static org.junit.Assert.*;
  *
  * @author Leseg
  */
-public class LoginTest {    
+public class LoginTest {
+   // Unit tests verify registration validation and login functionality. 
     Login login = new Login();
     public LoginTest() {
     }
