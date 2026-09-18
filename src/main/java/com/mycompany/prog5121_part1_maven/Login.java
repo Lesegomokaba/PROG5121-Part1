@@ -19,8 +19,8 @@ package com.mycompany.prog5121_part1_maven;
  */
 public class Login {
     // Login class handles user registration, validation, and authentication.
-    private String username;
-    private String password;
+    private String UserName;
+    private String Password;
     private String cellphone;
     private String firstName;
     private String lastname;
@@ -29,28 +29,30 @@ public class Login {
     private String loginStatus;
     
     
-    public boolean checkusername(){
-        return username.contains("_") && username.length() <= 5;
+    public boolean checkUserName(){
+        return UserName.contains("_") && UserName.length() <= 5;
         
     }
     
     public void setusername(String username) {
-        this.username = username;
+        this.UserName = username;
      }
     
- public boolean checkpasswordcomplexity() {
-    return password.length() >= 8
-            && password.matches(".*[A-Z].*")
-            && password.matches(".*[0-9].*")
-            && password.matches(".*[^a-zA-Z0-9].*");
+ public boolean checkPasswordComplexity() {
+    return Password.length() >= 8
+            && Password.matches(".*[A-Z].*")
+            && Password.matches(".*[0-9].*")
+            && Password.matches(".*[^a-zA-Z0-9].*");
 }
  public void setPassword(String password) {
-    this.password = password;
+    this.Password = password;
 }
      public void setcellphone (String cellphone) {
     this.cellphone = cellphone;
 }
      public boolean checkCellPhoneNumber() {
+         // Regex pattern adapted from Oracle Java documentation on regular expressions.
+// https://docs.oracle.com/javase/tutorial/essential/regex/
     return cellphone.matches("^\\+27[0-9]{9}$");
 }
    public void setfirstName(String firstName) {
@@ -60,29 +62,38 @@ public class Login {
     this.lastname = lastname;
    }
    
-  public String registerUser() {
-    if (!checkusername()) {
-        return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
+  public String registerUser(String field) {
+    if (field.equals("username")) {
+        if (checkUserName()) {
+            return "Username successfully captured.";
+        } else {
+            return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
+        }
     }
 
-    if (!checkpasswordcomplexity()) {
-        return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
+    if (field.equals("password")) {
+        if (checkPasswordComplexity()) {
+            return "Password successfully captured.";
+        } else {
+            return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
+        }
     }
 
-    if (!checkCellPhoneNumber()) {
-        return "Cell phone number incorrectly formatted or does not contain international code.";
+    if (field.equals("cellphone")) {
+        if (checkCellPhoneNumber()) {
+            return "Cell phone number successfully added.";
+        } else {
+            return "Cell phone number incorrectly formatted or does not contain international code.";
+        }
     }
 
-    return "Username successfully captured.";
+    return "Invalid registration field.";
 }
   
-  public boolean loginuser() {
-      return username.equals(username)&& password.equals(password);
-  }
   
   
   
-  public void setLoginUsername(String loginUsername) {
+  public void setLoginUserName(String loginUsername) {
     this.loginUsername = loginUsername;
 }
   
@@ -96,7 +107,7 @@ public class Login {
      }
    
      public boolean loginUser() {
-    if (username.equals(loginUsername) && password.equals(loginPassword)) {
+    if (UserName.equals(loginUsername) && Password.equals(loginPassword)) {
         loginStatus = "Welcome " + firstName + ", " + lastname + " it is great to see you again.";
         return true;
     } else {
@@ -111,16 +122,16 @@ public class Login {
          login.setfirstName("Lesego");
     login.setlastname("Mokaba");
     
-         System.out.println(login.checkusername());
+         System.out.println(login.checkUserName());
           login.setPassword("Password1!");
           
-           System.out.println(login.checkpasswordcomplexity());
+           System.out.println(login.checkPasswordComplexity());
             login.setcellphone("+27821234567");
              System.out.println(login.checkCellPhoneNumber());
              
-             System.out.println(login.registerUser());
+             System.out.println(login.registerUser("username"));
              
-              login.setLoginUsername("kyl_1");
+              login.setLoginUserName("kyl_1");
     login.setLoginPassword("Password1!");
     
     
